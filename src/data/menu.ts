@@ -1,0 +1,861 @@
+export type LocaleCode = 'es' | 'en' | 'fr'
+
+export type UiLocaleOption = {
+  code: LocaleCode
+  label: string
+  href: string
+}
+
+export type Highlight = {
+  label: string
+  value: string
+  note: string
+}
+
+export type MenuItem = {
+  name: string
+  price?: string
+  note?: string
+}
+
+export type MenuSectionData = {
+  anchor: string
+  kicker: string
+  title: string
+  description: string
+  subtitle?: string
+  priceNote?: string
+  footerNotes?: string[]
+  featured?: boolean
+  items: MenuItem[]
+}
+
+export type UiText = {
+  heroTitle: string
+  heroPrimaryAction: string
+  heroSecondaryAction: string
+  quickInstagram: string
+  quickCall: string
+  quickDirections: string
+  referencesLabel: string
+  contactTitle: string
+  contactMenu: string
+  contactInstagram: string
+  contactCall: string
+  contactDirections: string
+  backToTop: string
+}
+
+export type LocaleContent = {
+  ui: UiText
+  highlights: Highlight[]
+  sections: MenuSectionData[]
+}
+
+export const localeOptions: UiLocaleOption[] = [
+  { code: 'es', label: 'ES', href: '/es/' },
+  { code: 'en', label: 'EN', href: '/en/' },
+  { code: 'fr', label: 'FR', href: '/fr/' },
+]
+
+export function getLocaleFromPath(pathname: string): LocaleCode {
+  if (pathname.startsWith('/en')) return 'en'
+  if (pathname.startsWith('/fr')) return 'fr'
+  return 'es'
+}
+
+const highlightsEs: Highlight[] = [
+  { label: 'Shishas', value: '10€', note: '' },
+  { label: 'Shisha Luxury', value: 'Consúltenos', note: '' },
+  { label: 'Cocktails con alcohol', value: '8€', note: '' },
+  { label: 'Cocktails sin alcohol', value: '7€', note: '' },
+  { label: 'Sangría de cava (1L)', value: '15,00€', note: '' },
+  { label: 'Sangría de vino (1L)', value: '14,00€', note: '' },
+]
+
+const highlightsEn: Highlight[] = [
+  { label: 'Shishas', value: '10€', note: '' },
+  { label: 'Luxury Shisha', value: 'Ask us', note: '' },
+  { label: 'Cocktails with alcohol', value: '8€', note: '' },
+  { label: 'Mocktails', value: '7€', note: '' },
+  { label: 'Cava sangria (1L)', value: '15.00€', note: '' },
+  { label: 'Wine sangria (1L)', value: '14.00€', note: '' },
+]
+
+const highlightsFr: Highlight[] = [
+  { label: 'Shishas', value: '10€', note: '' },
+  { label: 'Shisha Luxury', value: 'Consultez-nous', note: '' },
+  { label: 'Cocktails avec alcool', value: '8€', note: '' },
+  { label: 'Cocktails sans alcool', value: '7€', note: '' },
+  { label: 'Sangria au cava (1L)', value: '15,00€', note: '' },
+  { label: 'Sangria au vin (1L)', value: '14,00€', note: '' },
+]
+
+const sectionsEs: MenuSectionData[] = [
+  {
+    anchor: 'shishas',
+    kicker: '',
+    title: 'Shishas',
+    description: '',
+    priceNote: 'Shishas: 10€ · Shisha Luxury: Consúltenos',
+    featured: true,
+    items: [
+      { name: 'Mi Amor', note: 'Mezcla de piña, plátano y mentol.' },
+      { name: 'Love 66', note: 'Mezcla de maracuyá, melón, menta y sandía.' },
+      { name: 'Blueberry', note: 'Arándanos.' },
+      { name: 'Hawai', note: 'Mezcla de piña, mango y menta.' },
+      { name: 'Menta' },
+      { name: 'Manzana' },
+      { name: 'Lady Killer', note: 'Mezcla de mango, melocotón, menta y hielo.' },
+      { name: 'Tarta de Queso', note: 'Mezcla de tarta de queso, vainilla, caramelo y palomitas de maíz.' },
+      { name: 'Dancing Queen', note: 'Mezcla de piña, mango y frutos rojos.' },
+      { name: 'Blacknana', note: 'Mezcla de menta y uva.' },
+      { name: 'Shisha Luxury', note: 'Shisha especial de la casa.' },
+    ],
+  },
+  {
+    anchor: 'cocktails',
+    kicker: '',
+    title: 'Cocktails',
+    description: '',
+    priceNote: 'Con alcohol: 8€ · Sin alcohol: 7€',
+    featured: true,
+    items: [
+      { name: 'Blue Lagoon', note: 'Vodka, zumo de piña, lima, blue curaçao' },
+      { name: 'Coco Loco', note: 'Ron, malibú, batida de coco, leche de coco' },
+      { name: 'Daiquiri Frozen', note: 'Ron, fresas, sirope de fresa, lima' },
+      { name: 'Long Island Ice', note: 'Ron, vodka, tequila, gin, cointreau, lima, cocacola' },
+      { name: 'Margarita', note: 'Tequila, lima' },
+      { name: 'Mojito', note: 'Ron, lima, menta, sprite' },
+      { name: 'Mojito Fresa', note: 'Ron, lima, menta, sprite + fresa' },
+      { name: 'Mojito Coco', note: 'Ron, lima, menta, sprite + coco' },
+      { name: 'Mojito Mango', note: 'Ron, lima, menta, sprite + mango' },
+      { name: 'Mojito Maracuyá', note: 'Ron, lima, menta, sprite + maracuyá' },
+      { name: 'Mojito Piña', note: 'Ron, lima, menta, sprite + piña' },
+      { name: 'Piña Colada', note: 'Ron, malibú, batida de coco, zumo de piña' },
+      { name: 'San Francisco', note: 'Vodka, zumo de naranja, zumo de piña, mango, granadina' },
+      { name: 'Sex on the Beach', note: 'Vodka, zumo de naranja, maracuyá, licor melocotón, granadina' },
+      { name: 'Tequila Sunrise', note: 'Tequila, zumo de naranja, maracuyá, licor melocotón, granadina' },
+    ],
+  },
+  {
+    anchor: 'sangrias',
+    kicker: '',
+    title: 'Sangrías',
+    description: '',
+    featured: true,
+    items: [
+      { name: 'De Cava (1L)', price: '15,00€' },
+      { name: 'De Vino (1L)', price: '14,00€' },
+      { name: 'Copa de Cava', price: '4,50€' },
+      { name: 'Copa de Vino', price: '4,50€' },
+    ],
+  },
+  {
+    anchor: 'cervezas-vinos',
+    kicker: '',
+    title: 'Cervezas - Vinos',
+    description: '',
+    items: [
+      { name: 'Coronita', price: '3,50€' },
+      { name: 'Desperados', price: '3,50€' },
+      { name: 'Heineken', price: '3,50€' },
+      { name: 'Estrella Damm', price: '3,50€' },
+      { name: 'Estrella Galicia Tostada 0,0%', price: '3,50€' },
+      { name: 'Vino Blanco', price: '4,00€' },
+      { name: 'Vino Tinto', price: '4,00€' },
+    ],
+  },
+  {
+    anchor: 'refrescos',
+    kicker: '',
+    title: 'Refrescos',
+    description: '',
+    items: [
+      { name: 'Agua', price: '2,50€' },
+      { name: 'Agua con gas', price: '3,00€' },
+      { name: 'Red Bull', price: '3,50€' },
+      { name: 'Hawai', price: '3,00€' },
+      { name: 'Poms', price: '3,00€' },
+      { name: 'Nestea', price: '3,00€' },
+      { name: 'Nestea Maracuyá', price: '3,00€' },
+      { name: 'Aquarius Limón', price: '3,00€' },
+      { name: 'Aquarius Naranja', price: '3,00€' },
+      { name: 'Coca-Cola', price: '3,00€' },
+      { name: 'Coca-Cola Zero', price: '3,00€' },
+      { name: 'Fanta Limón', price: '3,00€' },
+      { name: 'Fanta Naranja', price: '3,00€' },
+      { name: 'Zumo de Melocotón', price: '3,00€' },
+      { name: 'Zumo de Manzana', price: '3,00€' },
+      { name: 'Zumo de Piña', price: '3,00€' },
+      { name: 'Zumo de Naranja Natural', price: '4,00€' },
+      { name: 'Seven Up', price: '3,00€' },
+      { name: 'Tónica Schweppes', price: '3,00€' },
+      { name: 'Schweppes Naranja', price: '3,00€' },
+      { name: 'Schweppes Limón', price: '3,00€' },
+      { name: 'Oasis Frutos Rojos', price: '3,00€' },
+      { name: 'Oasis Cítrico', price: '3,00€' },
+      { name: 'Oasis Tropical', price: '3,00€' },
+    ],
+  },
+  {
+    anchor: 'cafe-infusiones',
+    kicker: '',
+    title: 'Café - Infusiones',
+    description: '',
+    items: [
+      { name: 'Café Americano', price: '1,90€' },
+      { name: 'Café con Hielo', price: '1,90€' },
+      { name: 'Café con Leche', price: '2,00€' },
+      { name: 'Café Solo', price: '1,50€' },
+      { name: 'Capuchino', price: '2,50€' },
+      { name: 'Carajillo', price: '2,50€' },
+      { name: 'Cortado', price: '1,90€' },
+      { name: 'Té Moruno', price: '3,00€' },
+      { name: 'Infusiones variadas', price: '2,50€' },
+    ],
+  },
+  {
+    anchor: 'batidos',
+    kicker: '',
+    title: 'Batidos',
+    description: '',
+    items: [
+      { name: 'Aguacate', price: '5,00€' },
+      { name: 'Chocolate', price: '5,00€' },
+      { name: 'Vainilla', price: '5,00€' },
+      { name: 'Coco', price: '5,00€' },
+      { name: 'Mango', price: '5,00€' },
+      { name: 'Fresa', price: '5,00€' },
+      { name: 'Plátano', price: '5,00€' },
+    ],
+    footerNotes: ['Se pueden mezclar.', 'Con nata: +0,50€.'],
+  },
+  {
+    anchor: 'palomitas',
+    kicker: '',
+    title: 'Palomitas',
+    description: '',
+    items: [
+      { name: 'Palomitas', price: '2,50€' },
+      { name: 'Palomitas de colores', price: '3,00€' },
+    ],
+  },
+  {
+    anchor: 'smoothies',
+    kicker: '',
+    title: 'Smoothies',
+    description: '',
+    subtitle: '100% naturales y sin alérgenos',
+    items: [
+      { name: 'Berry Passion', price: '5,00€', note: 'Frambuesa, arándanos, plátano.' },
+      { name: 'Strawberry Split', price: '5,00€', note: 'Fresa, plátano, papaya, cereza.' },
+      { name: 'Mango Paradise', price: '5,00€', note: 'Mango, maracuyá, piña, limón.' },
+      { name: 'Kiwi Cooler', price: '5,00€', note: 'Melón, mango, piña, kiwi.' },
+      { name: 'Tropi-Colada', price: '5,00€', note: 'Plátano, coco, piña.' },
+    ],
+  },
+  {
+    anchor: 'vodka',
+    kicker: '',
+    title: 'Vodka',
+    description: '',
+    items: [
+      { name: 'Absolut', price: '7,50€' },
+      { name: 'Belvedere', price: '9,00€' },
+      { name: 'Grey Goose', price: '9,00€' },
+      { name: 'Ciroc', price: '8,00€' },
+      { name: 'Ciroc Red Berry', price: '8,00€' },
+      { name: 'Ciroc Coco', price: '8,00€' },
+      { name: 'Ciroc Apple', price: '8,00€' },
+      { name: 'Ciroc Pineapple', price: '8,00€' },
+      { name: 'Ciroc Mango', price: '8,00€' },
+    ],
+  },
+  {
+    anchor: 'whiskey',
+    kicker: '',
+    title: 'Whiskey',
+    description: '',
+    items: [
+      { name: "Ballantine's", price: '7,50€' },
+      { name: 'Black Label', price: '8,00€' },
+      { name: 'Red Label', price: '8,00€' },
+      { name: 'Gold Label', price: '9,00€' },
+      { name: 'Cardhu', price: '9,00€' },
+      { name: 'Chivas', price: '9,00€' },
+      { name: 'J&B', price: '6,00€' },
+      { name: 'Jack Daniel’s', price: '7,50€' },
+      { name: 'Jack Daniel’s Manzana', price: '7,50€' },
+      { name: 'Jack Daniel’s Miel', price: '7,50€' },
+    ],
+  },
+  {
+    anchor: 'ron',
+    kicker: '',
+    title: 'Ron',
+    description: '',
+    items: [
+      { name: 'Barceló', price: '8,00€' },
+      { name: 'Brugal', price: '7,50€' },
+      { name: 'Cacique', price: '7,50€' },
+      { name: 'Havana 7', price: '7,50€' },
+    ],
+  },
+  {
+    anchor: 'ginebras',
+    kicker: '',
+    title: 'Ginebras',
+    description: '',
+    items: [
+      { name: 'Beefeater', price: '8,00€' },
+      { name: 'Bombay Dry', price: '8,00€' },
+      { name: 'Bombay Sapphire', price: '8,00€' },
+      { name: 'Brockmans', price: '9,00€' },
+      { name: 'Bulldog', price: '8,50€' },
+      { name: 'G-Vine', price: '9,00€' },
+      { name: "Hendrick's", price: '9,00€' },
+      { name: 'Larios', price: '7,00€' },
+      { name: 'Puerto de Indias Strawberry', price: '8,00€' },
+      { name: 'Puerto de Indias Blackberry', price: '8,00€' },
+      { name: "Seagram's", price: '8,00€' },
+      { name: 'Tanqueray', price: '8,00€' },
+      { name: 'Sipsmith London', price: '7,50€' },
+      { name: "Gordon's", price: '7,50€' },
+    ],
+  },
+]
+
+const sectionsEn: MenuSectionData[] = [
+  {
+    anchor: 'shishas',
+    kicker: '',
+    title: 'Shishas',
+    description: '',
+    priceNote: 'Shishas: 10€ · Luxury Shisha: Ask us',
+    featured: true,
+    items: [
+      { name: 'Mi Amor', note: 'Blend of pineapple, banana and menthol.' },
+      { name: 'Love 66', note: 'Blend of passion fruit, melon, mint and watermelon.' },
+      { name: 'Blueberry', note: 'Blueberries.' },
+      { name: 'Hawai', note: 'Blend of pineapple, mango and mint.' },
+      { name: 'Mint' },
+      { name: 'Apple' },
+      { name: 'Lady Killer', note: 'Blend of mango, peach, mint and ice.' },
+      { name: 'Cheesecake', note: 'Blend of cheesecake, vanilla, caramel and popcorn.' },
+      { name: 'Dancing Queen', note: 'Blend of pineapple, mango and red berries.' },
+      { name: 'Blacknana', note: 'Blend of mint and grape.' },
+      { name: 'Luxury Shisha', note: 'House special shisha.' },
+    ],
+  },
+  {
+    anchor: 'cocktails',
+    kicker: '',
+    title: 'Cocktails',
+    description: '',
+    priceNote: 'With alcohol: 8€ · Alcohol-free: 7€',
+    featured: true,
+    items: [
+      { name: 'Blue Lagoon', note: 'Vodka, pineapple juice, lime, blue curaçao' },
+      { name: 'Coco Loco', note: 'Rum, Malibu, coconut cream, coconut milk' },
+      { name: 'Daiquiri Frozen', note: 'Rum, strawberries, strawberry syrup, lime' },
+      { name: 'Long Island Ice', note: 'Rum, vodka, tequila, gin, Cointreau, lime, Coca-Cola' },
+      { name: 'Margarita', note: 'Tequila, lime' },
+      { name: 'Mojito', note: 'Rum, lime, mint, Sprite' },
+      { name: 'Mojito Fresa', note: 'Rum, lime, mint, Sprite + strawberry' },
+      { name: 'Mojito Coco', note: 'Rum, lime, mint, Sprite + coconut' },
+      { name: 'Mojito Mango', note: 'Rum, lime, mint, Sprite + mango' },
+      { name: 'Mojito Maracuyá', note: 'Rum, lime, mint, Sprite + passion fruit' },
+      { name: 'Mojito Piña', note: 'Rum, lime, mint, Sprite + pineapple' },
+      { name: 'Piña Colada', note: 'Rum, Malibu, coconut cream, pineapple juice' },
+      { name: 'San Francisco', note: 'Vodka, orange juice, pineapple juice, mango, grenadine' },
+      { name: 'Sex on the Beach', note: 'Vodka, orange juice, passion fruit, peach liqueur, grenadine' },
+      { name: 'Tequila Sunrise', note: 'Tequila, orange juice, passion fruit, peach liqueur, grenadine' },
+    ],
+  },
+  {
+    anchor: 'sangrias',
+    kicker: '',
+    title: 'Sangrias',
+    description: '',
+    featured: true,
+    items: [
+      { name: 'Cava Sangria (1L)', price: '15.00€' },
+      { name: 'Wine Sangria (1L)', price: '14.00€' },
+      { name: 'Glass of Cava', price: '4.50€' },
+      { name: 'Glass of Wine', price: '4.50€' },
+    ],
+  },
+  {
+    anchor: 'cervezas-vinos',
+    kicker: '',
+    title: 'Beers - Wines',
+    description: '',
+    items: [
+      { name: 'Coronita', price: '3.50€' },
+      { name: 'Desperados', price: '3.50€' },
+      { name: 'Heineken', price: '3.50€' },
+      { name: 'Estrella Damm', price: '3.50€' },
+      { name: 'Estrella Galicia Toasted 0.0%', price: '3.50€' },
+      { name: 'White Wine', price: '4.00€' },
+      { name: 'Red Wine', price: '4.00€' },
+    ],
+  },
+  {
+    anchor: 'refrescos',
+    kicker: '',
+    title: 'Soft Drinks',
+    description: '',
+    items: [
+      { name: 'Water', price: '2.50€' },
+      { name: 'Sparkling Water', price: '3.00€' },
+      { name: 'Red Bull', price: '3.50€' },
+      { name: 'Hawai', price: '3.00€' },
+      { name: 'Poms', price: '3.00€' },
+      { name: 'Nestea', price: '3.00€' },
+      { name: 'Nestea Passion Fruit', price: '3.00€' },
+      { name: 'Aquarius Lemon', price: '3.00€' },
+      { name: 'Aquarius Orange', price: '3.00€' },
+      { name: 'Coca-Cola', price: '3.00€' },
+      { name: 'Coca-Cola Zero', price: '3.00€' },
+      { name: 'Fanta Lemon', price: '3.00€' },
+      { name: 'Fanta Orange', price: '3.00€' },
+      { name: 'Peach Juice', price: '3.00€' },
+      { name: 'Apple Juice', price: '3.00€' },
+      { name: 'Pineapple Juice', price: '3.00€' },
+      { name: 'Fresh Orange Juice', price: '4.00€' },
+      { name: 'Seven Up', price: '3.00€' },
+      { name: 'Schweppes Tonic', price: '3.00€' },
+      { name: 'Schweppes Orange', price: '3.00€' },
+      { name: 'Schweppes Lemon', price: '3.00€' },
+      { name: 'Oasis Red Fruits', price: '3.00€' },
+      { name: 'Oasis Citrus', price: '3.00€' },
+      { name: 'Oasis Tropical', price: '3.00€' },
+    ],
+  },
+  {
+    anchor: 'cafe-infusiones',
+    kicker: '',
+    title: 'Coffee - Infusions',
+    description: '',
+    items: [
+      { name: 'Americano', price: '1.90€' },
+      { name: 'Iced Coffee', price: '1.90€' },
+      { name: 'Coffee with Milk', price: '2.00€' },
+      { name: 'Espresso', price: '1.50€' },
+      { name: 'Cappuccino', price: '2.50€' },
+      { name: 'Carajillo', price: '2.50€' },
+      { name: 'Macchiato', price: '1.90€' },
+      { name: 'Moroccan Tea', price: '3.00€' },
+      { name: 'Assorted Infusions', price: '2.50€' },
+    ],
+  },
+  {
+    anchor: 'batidos',
+    kicker: '',
+    title: 'Milkshakes',
+    description: '',
+    items: [
+      { name: 'Avocado', price: '5.00€' },
+      { name: 'Chocolate', price: '5.00€' },
+      { name: 'Vanilla', price: '5.00€' },
+      { name: 'Coconut', price: '5.00€' },
+      { name: 'Mango', price: '5.00€' },
+      { name: 'Strawberry', price: '5.00€' },
+      { name: 'Banana', price: '5.00€' },
+    ],
+    footerNotes: ['Mixes available.', 'With whipped cream: +0.50€.'],
+  },
+  {
+    anchor: 'palomitas',
+    kicker: '',
+    title: 'Popcorn',
+    description: '',
+    items: [
+      { name: 'Popcorn', price: '2.50€' },
+      { name: 'Colored Popcorn', price: '3.00€' },
+    ],
+  },
+  {
+    anchor: 'smoothies',
+    kicker: '',
+    title: 'Smoothies',
+    description: '',
+    subtitle: '100% natural and allergen-free',
+    items: [
+      { name: 'Berry Passion', price: '5.00€', note: 'Raspberry, blueberries, banana.' },
+      { name: 'Strawberry Split', price: '5.00€', note: 'Strawberry, banana, papaya, cherry.' },
+      { name: 'Mango Paradise', price: '5.00€', note: 'Mango, passion fruit, pineapple, lemon.' },
+      { name: 'Kiwi Cooler', price: '5.00€', note: 'Melon, mango, pineapple, kiwi.' },
+      { name: 'Tropi-Colada', price: '5.00€', note: 'Banana, coconut, pineapple.' },
+    ],
+  },
+  {
+    anchor: 'vodka',
+    kicker: '',
+    title: 'Vodka',
+    description: '',
+    items: [
+      { name: 'Absolut', price: '7.50€' },
+      { name: 'Belvedere', price: '9.00€' },
+      { name: 'Grey Goose', price: '9.00€' },
+      { name: 'Ciroc', price: '8.00€' },
+      { name: 'Ciroc Red Berry', price: '8.00€' },
+      { name: 'Ciroc Coco', price: '8.00€' },
+      { name: 'Ciroc Apple', price: '8.00€' },
+      { name: 'Ciroc Pineapple', price: '8.00€' },
+      { name: 'Ciroc Mango', price: '8.00€' },
+    ],
+  },
+  {
+    anchor: 'whiskey',
+    kicker: '',
+    title: 'Whiskey',
+    description: '',
+    items: [
+      { name: "Ballantine's", price: '7.50€' },
+      { name: 'Black Label', price: '8.00€' },
+      { name: 'Red Label', price: '8.00€' },
+      { name: 'Gold Label', price: '9.00€' },
+      { name: 'Cardhu', price: '9.00€' },
+      { name: 'Chivas', price: '9.00€' },
+      { name: 'J&B', price: '6.00€' },
+      { name: 'Jack Daniel’s', price: '7.50€' },
+      { name: 'Jack Daniel’s Apple', price: '7.50€' },
+      { name: 'Jack Daniel’s Honey', price: '7.50€' },
+    ],
+  },
+  {
+    anchor: 'ron',
+    kicker: '',
+    title: 'Rum',
+    description: '',
+    items: [
+      { name: 'Barceló', price: '8.00€' },
+      { name: 'Brugal', price: '7.50€' },
+      { name: 'Cacique', price: '7.50€' },
+      { name: 'Havana 7', price: '7.50€' },
+    ],
+  },
+  {
+    anchor: 'ginebras',
+    kicker: '',
+    title: 'Gins',
+    description: '',
+    items: [
+      { name: 'Beefeater', price: '8.00€' },
+      { name: 'Bombay Dry', price: '8.00€' },
+      { name: 'Bombay Sapphire', price: '8.00€' },
+      { name: 'Brockmans', price: '9.00€' },
+      { name: 'Bulldog', price: '8.50€' },
+      { name: 'G-Vine', price: '9.00€' },
+      { name: "Hendrick's", price: '9.00€' },
+      { name: 'Larios', price: '7.00€' },
+      { name: 'Puerto de Indias Strawberry', price: '8.00€' },
+      { name: 'Puerto de Indias Blackberry', price: '8.00€' },
+      { name: "Seagram's", price: '8.00€' },
+      { name: 'Tanqueray', price: '8.00€' },
+      { name: 'Sipsmith London', price: '7.50€' },
+      { name: "Gordon's", price: '7.50€' },
+    ],
+  },
+]
+
+const sectionsFr: MenuSectionData[] = [
+  {
+    anchor: 'shishas',
+    kicker: '',
+    title: 'Shishas',
+    description: '',
+    priceNote: 'Shishas : 10€ · Shisha Luxury : consultez-nous',
+    featured: true,
+    items: [
+      { name: 'Mi Amor', note: 'Mélange d’ananas, banane et menthol.' },
+      { name: 'Love 66', note: 'Mélange de fruit de la passion, melon, menthe et pastèque.' },
+      { name: 'Blueberry', note: 'Myrtilles.' },
+      { name: 'Hawai', note: 'Mélange d’ananas, mangue et menthe.' },
+      { name: 'Menthe' },
+      { name: 'Pomme' },
+      { name: 'Lady Killer', note: 'Mélange de mangue, pêche, menthe et glace.' },
+      { name: 'Tarta de Queso', note: 'Mélange de cheesecake, vanille, caramel et pop-corn.' },
+      { name: 'Dancing Queen', note: 'Mélange d’ananas, mangue et fruits rouges.' },
+      { name: 'Blacknana', note: 'Mélange de menthe et raisin.' },
+      { name: 'Shisha Luxury', note: 'Shisha spéciale de la maison.' },
+    ],
+  },
+  {
+    anchor: 'cocktails',
+    kicker: '',
+    title: 'Cocktails',
+    description: '',
+    priceNote: 'Avec alcool : 8€ · Sans alcool : 7€',
+    featured: true,
+    items: [
+      { name: 'Blue Lagoon', note: 'Vodka, jus d’ananas, citron vert, blue curaçao' },
+      { name: 'Coco Loco', note: 'Rhum, Malibu, crème de coco, lait de coco' },
+      { name: 'Daiquiri Frozen', note: 'Rhum, fraises, sirop de fraise, citron vert' },
+      { name: 'Long Island Ice', note: 'Rhum, vodka, tequila, gin, Cointreau, citron vert, Coca-Cola' },
+      { name: 'Margarita', note: 'Tequila, citron vert' },
+      { name: 'Mojito', note: 'Rhum, citron vert, menthe, Sprite' },
+      { name: 'Mojito Fresa', note: 'Rhum, citron vert, menthe, Sprite + fraise' },
+      { name: 'Mojito Coco', note: 'Rhum, citron vert, menthe, Sprite + coco' },
+      { name: 'Mojito Mango', note: 'Rhum, citron vert, menthe, Sprite + mangue' },
+      { name: 'Mojito Maracuyá', note: 'Rhum, citron vert, menthe, Sprite + fruit de la passion' },
+      { name: 'Mojito Piña', note: 'Rhum, citron vert, menthe, Sprite + ananas' },
+      { name: 'Piña Colada', note: 'Rhum, Malibu, crème de coco, jus d’ananas' },
+      { name: 'San Francisco', note: 'Vodka, jus d’orange, jus d’ananas, mangue, grenadine' },
+      { name: 'Sex on the Beach', note: 'Vodka, jus d’orange, fruit de la passion, liqueur de pêche, grenadine' },
+      { name: 'Tequila Sunrise', note: 'Tequila, jus d’orange, fruit de la passion, liqueur de pêche, grenadine' },
+    ],
+  },
+  {
+    anchor: 'sangrias',
+    kicker: '',
+    title: 'Sangrias',
+    description: '',
+    featured: true,
+    items: [
+      { name: 'Au cava (1L)', price: '15,00€' },
+      { name: 'Au vin (1L)', price: '14,00€' },
+      { name: 'Coupe de cava', price: '4,50€' },
+      { name: 'Coupe de vin', price: '4,50€' },
+    ],
+  },
+  {
+    anchor: 'cervezas-vinos',
+    kicker: '',
+    title: 'Bières - Vins',
+    description: '',
+    items: [
+      { name: 'Coronita', price: '3,50€' },
+      { name: 'Desperados', price: '3,50€' },
+      { name: 'Heineken', price: '3,50€' },
+      { name: 'Estrella Damm', price: '3,50€' },
+      { name: 'Estrella Galicia Tostada 0,0%', price: '3,50€' },
+      { name: 'Vin blanc', price: '4,00€' },
+      { name: 'Vin rouge', price: '4,00€' },
+    ],
+  },
+  {
+    anchor: 'refrescos',
+    kicker: '',
+    title: 'Softs',
+    description: '',
+    items: [
+      { name: 'Eau', price: '2,50€' },
+      { name: 'Eau gazeuse', price: '3,00€' },
+      { name: 'Red Bull', price: '3,50€' },
+      { name: 'Hawai', price: '3,00€' },
+      { name: 'Poms', price: '3,00€' },
+      { name: 'Nestea', price: '3,00€' },
+      { name: 'Nestea Fruit de la passion', price: '3,00€' },
+      { name: 'Aquarius Citron', price: '3,00€' },
+      { name: 'Aquarius Orange', price: '3,00€' },
+      { name: 'Coca-Cola', price: '3,00€' },
+      { name: 'Coca-Cola Zero', price: '3,00€' },
+      { name: 'Fanta Citron', price: '3,00€' },
+      { name: 'Fanta Orange', price: '3,00€' },
+      { name: 'Jus de pêche', price: '3,00€' },
+      { name: 'Jus de pomme', price: '3,00€' },
+      { name: 'Jus d’ananas', price: '3,00€' },
+      { name: 'Jus d’orange pressé', price: '4,00€' },
+      { name: 'Seven Up', price: '3,00€' },
+      { name: 'Schweppes Tonic', price: '3,00€' },
+      { name: 'Schweppes Orange', price: '3,00€' },
+      { name: 'Schweppes Citron', price: '3,00€' },
+      { name: 'Oasis Fruits rouges', price: '3,00€' },
+      { name: 'Oasis Agrumes', price: '3,00€' },
+      { name: 'Oasis Tropical', price: '3,00€' },
+    ],
+  },
+  {
+    anchor: 'cafe-infusiones',
+    kicker: '',
+    title: 'Café - Infusions',
+    description: '',
+    items: [
+      { name: 'Café américain', price: '1,90€' },
+      { name: 'Café glacé', price: '1,90€' },
+      { name: 'Café au lait', price: '2,00€' },
+      { name: 'Expresso', price: '1,50€' },
+      { name: 'Cappuccino', price: '2,50€' },
+      { name: 'Carajillo', price: '2,50€' },
+      { name: 'Cortado', price: '1,90€' },
+      { name: 'Thé marocain', price: '3,00€' },
+      { name: 'Infusions variées', price: '2,50€' },
+    ],
+  },
+  {
+    anchor: 'batidos',
+    kicker: '',
+    title: 'Milkshakes',
+    description: '',
+    items: [
+      { name: 'Avocat', price: '5,00€' },
+      { name: 'Chocolat', price: '5,00€' },
+      { name: 'Vanille', price: '5,00€' },
+      { name: 'Coco', price: '5,00€' },
+      { name: 'Mangue', price: '5,00€' },
+      { name: 'Fraise', price: '5,00€' },
+      { name: 'Banane', price: '5,00€' },
+    ],
+    footerNotes: ['Mélanges possibles.', 'Avec chantilly : +0,50€.'],
+  },
+  {
+    anchor: 'palomitas',
+    kicker: '',
+    title: 'Pop-corn',
+    description: '',
+    items: [
+      { name: 'Pop-corn', price: '2,50€' },
+      { name: 'Pop-corn coloré', price: '3,00€' },
+    ],
+  },
+  {
+    anchor: 'smoothies',
+    kicker: '',
+    title: 'Smoothies',
+    description: '',
+    subtitle: '100% naturels et sans allergènes',
+    items: [
+      { name: 'Berry Passion', price: '5,00€', note: 'Framboise, myrtilles, banane.' },
+      { name: 'Strawberry Split', price: '5,00€', note: 'Fraise, banane, papaye, cerise.' },
+      { name: 'Mango Paradise', price: '5,00€', note: 'Mangue, fruit de la passion, ananas, citron.' },
+      { name: 'Kiwi Cooler', price: '5,00€', note: 'Melon, mangue, ananas, kiwi.' },
+      { name: 'Tropi-Colada', price: '5,00€', note: 'Banane, coco, ananas.' },
+    ],
+  },
+  {
+    anchor: 'vodka',
+    kicker: '',
+    title: 'Vodka',
+    description: '',
+    items: [
+      { name: 'Absolut', price: '7,50€' },
+      { name: 'Belvedere', price: '9,00€' },
+      { name: 'Grey Goose', price: '9,00€' },
+      { name: 'Ciroc', price: '8,00€' },
+      { name: 'Ciroc Red Berry', price: '8,00€' },
+      { name: 'Ciroc Coco', price: '8,00€' },
+      { name: 'Ciroc Apple', price: '8,00€' },
+      { name: 'Ciroc Pineapple', price: '8,00€' },
+      { name: 'Ciroc Mango', price: '8,00€' },
+    ],
+  },
+  {
+    anchor: 'whiskey',
+    kicker: '',
+    title: 'Whisky',
+    description: '',
+    items: [
+      { name: "Ballantine's", price: '7,50€' },
+      { name: 'Black Label', price: '8,00€' },
+      { name: 'Red Label', price: '8,00€' },
+      { name: 'Gold Label', price: '9,00€' },
+      { name: 'Cardhu', price: '9,00€' },
+      { name: 'Chivas', price: '9,00€' },
+      { name: 'J&B', price: '6,00€' },
+      { name: 'Jack Daniel’s', price: '7,50€' },
+      { name: 'Jack Daniel’s Pomme', price: '7,50€' },
+      { name: 'Jack Daniel’s Miel', price: '7,50€' },
+    ],
+  },
+  {
+    anchor: 'ron',
+    kicker: '',
+    title: 'Rhum',
+    description: '',
+    items: [
+      { name: 'Barceló', price: '8,00€' },
+      { name: 'Brugal', price: '7,50€' },
+      { name: 'Cacique', price: '7,50€' },
+      { name: 'Havana 7', price: '7,50€' },
+    ],
+  },
+  {
+    anchor: 'ginebras',
+    kicker: '',
+    title: 'Gins',
+    description: '',
+    items: [
+      { name: 'Beefeater', price: '8,00€' },
+      { name: 'Bombay Dry', price: '8,00€' },
+      { name: 'Bombay Sapphire', price: '8,00€' },
+      { name: 'Brockmans', price: '9,00€' },
+      { name: 'Bulldog', price: '8,50€' },
+      { name: 'G-Vine', price: '9,00€' },
+      { name: "Hendrick's", price: '9,00€' },
+      { name: 'Larios', price: '7,00€' },
+      { name: 'Puerto de Indias Strawberry', price: '8,00€' },
+      { name: 'Puerto de Indias Blackberry', price: '8,00€' },
+      { name: "Seagram's", price: '8,00€' },
+      { name: 'Tanqueray', price: '8,00€' },
+      { name: 'Sipsmith London', price: '7,50€' },
+      { name: "Gordon's", price: '7,50€' },
+    ],
+  },
+]
+
+const localeContent: Record<LocaleCode, LocaleContent> = {
+  es: {
+    ui: {
+      heroTitle: 'Carta',
+      heroPrimaryAction: 'Ver carta',
+      heroSecondaryAction: 'Carta PDF',
+      quickInstagram: 'Instagram',
+      quickCall: 'Llamar',
+      quickDirections: 'Cómo llegar',
+      referencesLabel: 'referencias',
+      contactTitle: 'Contacto',
+      contactMenu: 'Carta',
+      contactInstagram: 'Instagram',
+      contactCall: 'Llamar',
+      contactDirections: 'Cómo llegar',
+      backToTop: 'Volver al inicio',
+    },
+    highlights: highlightsEs,
+    sections: sectionsEs,
+  },
+  en: {
+    ui: {
+      heroTitle: 'Menu',
+      heroPrimaryAction: 'View menu',
+      heroSecondaryAction: 'PDF menu',
+      quickInstagram: 'Instagram',
+      quickCall: 'Call',
+      quickDirections: 'Directions',
+      referencesLabel: 'items',
+      contactTitle: 'Contact',
+      contactMenu: 'Menu',
+      contactInstagram: 'Instagram',
+      contactCall: 'Call',
+      contactDirections: 'Directions',
+      backToTop: 'Back to top',
+    },
+    highlights: highlightsEn,
+    sections: sectionsEn,
+  },
+  fr: {
+    ui: {
+      heroTitle: 'Carte',
+      heroPrimaryAction: 'Voir la carte',
+      heroSecondaryAction: 'Carte PDF',
+      quickInstagram: 'Instagram',
+      quickCall: 'Appeler',
+      quickDirections: 'Itinéraire',
+      referencesLabel: 'références',
+      contactTitle: 'Contact',
+      contactMenu: 'Carte',
+      contactInstagram: 'Instagram',
+      contactCall: 'Appeler',
+      contactDirections: 'Itinéraire',
+      backToTop: 'Retour en haut',
+    },
+    highlights: highlightsFr,
+    sections: sectionsFr,
+  },
+}
+
+export function getLocaleContent(locale: LocaleCode): LocaleContent {
+  return localeContent[locale]
+}
