@@ -6,12 +6,6 @@ export type UiLocaleOption = {
   href: string
 }
 
-export type Highlight = {
-  label: string
-  value: string
-  note: string
-}
-
 export type MenuItem = {
   name: string
   price?: string
@@ -31,12 +25,7 @@ export type MenuSectionData = {
 }
 
 export type UiText = {
-  heroTitle: string
-  heroPrimaryAction: string
-  heroSecondaryAction: string
-  quickInstagram: string
-  quickCall: string
-  quickDirections: string
+  heroScrollDown: string
   referencesLabel: string
   contactTitle: string
   contactMenu: string
@@ -48,7 +37,6 @@ export type UiText = {
 
 export type LocaleContent = {
   ui: UiText
-  highlights: Highlight[]
   sections: MenuSectionData[]
 }
 
@@ -64,40 +52,13 @@ export function getLocaleFromPath(pathname: string): LocaleCode {
   return 'es'
 }
 
-const highlightsEs: Highlight[] = [
-  { label: 'Shishas', value: '10€', note: '' },
-  { label: 'Shisha Luxury', value: 'Consúltenos', note: '' },
-  { label: 'Cocktails con alcohol', value: '8€', note: '' },
-  { label: 'Cocktails sin alcohol', value: '7€', note: '' },
-  { label: 'Sangría de cava (1L)', value: '15,00€', note: '' },
-  { label: 'Sangría de vino (1L)', value: '14,00€', note: '' },
-]
-
-const highlightsEn: Highlight[] = [
-  { label: 'Shishas', value: '10€', note: '' },
-  { label: 'Luxury Shisha', value: 'Ask us', note: '' },
-  { label: 'Cocktails with alcohol', value: '8€', note: '' },
-  { label: 'Mocktails', value: '7€', note: '' },
-  { label: 'Cava sangria (1L)', value: '15.00€', note: '' },
-  { label: 'Wine sangria (1L)', value: '14.00€', note: '' },
-]
-
-const highlightsFr: Highlight[] = [
-  { label: 'Shishas', value: '10€', note: '' },
-  { label: 'Shisha Luxury', value: 'Consultez-nous', note: '' },
-  { label: 'Cocktails avec alcool', value: '8€', note: '' },
-  { label: 'Cocktails sans alcool', value: '7€', note: '' },
-  { label: 'Sangria au cava (1L)', value: '15,00€', note: '' },
-  { label: 'Sangria au vin (1L)', value: '14,00€', note: '' },
-]
-
 const sectionsEs: MenuSectionData[] = [
   {
     anchor: 'shishas',
     kicker: '',
     title: 'Shishas',
     description: '',
-    priceNote: 'Shishas: 10€ · Shisha Luxury: Consúltenos',
+    priceNote: 'Shishas · Shisha Luxury: Consúltenos',
     featured: true,
     items: [
       { name: 'Mi Amor', note: 'Mezcla de piña, plátano y mentol.' },
@@ -107,7 +68,6 @@ const sectionsEs: MenuSectionData[] = [
       { name: 'Menta' },
       { name: 'Manzana' },
       { name: 'Lady Killer', note: 'Mezcla de mango, melocotón, menta y hielo.' },
-      { name: 'Tarta de Queso', note: 'Mezcla de tarta de queso, vainilla, caramelo y palomitas de maíz.' },
       { name: 'Dancing Queen', note: 'Mezcla de piña, mango y frutos rojos.' },
       { name: 'Blacknana', note: 'Mezcla de menta y uva.' },
       { name: 'Shisha Luxury', note: 'Shisha especial de la casa.' },
@@ -147,8 +107,8 @@ const sectionsEs: MenuSectionData[] = [
     items: [
       { name: 'De Cava (1L)', price: '15,00€' },
       { name: 'De Vino (1L)', price: '14,00€' },
-      { name: 'Copa de Cava', price: '4,50€' },
-      { name: 'Copa de Vino', price: '4,50€' },
+      { name: 'Copa de Cava', price: '6€' },
+      { name: 'Copa de Vino', price: '5€' },
     ],
   },
   {
@@ -157,7 +117,7 @@ const sectionsEs: MenuSectionData[] = [
     title: 'Cervezas - Vinos',
     description: '',
     items: [
-      { name: 'Coronita', price: '3,50€' },
+      { name: 'Coronita', price: '4€' },
       { name: 'Desperados', price: '3,50€' },
       { name: 'Heineken', price: '3,50€' },
       { name: 'Estrella Damm', price: '3,50€' },
@@ -211,7 +171,7 @@ const sectionsEs: MenuSectionData[] = [
       { name: 'Capuchino', price: '2,50€' },
       { name: 'Carajillo', price: '2,50€' },
       { name: 'Cortado', price: '1,90€' },
-      { name: 'Té Moruno', price: '3,00€' },
+      { name: 'Té Marroquí', price: '3,50€' },
       { name: 'Infusiones variadas', price: '2,50€' },
     ],
   },
@@ -299,7 +259,7 @@ const sectionsEs: MenuSectionData[] = [
       { name: 'Barceló', price: '8,00€' },
       { name: 'Brugal', price: '7,50€' },
       { name: 'Cacique', price: '7,50€' },
-      { name: 'Havana 7', price: '7,50€' },
+      { name: 'Havana 7', price: '8,00€' },
     ],
   },
   {
@@ -332,7 +292,7 @@ const sectionsEn: MenuSectionData[] = [
     kicker: '',
     title: 'Shishas',
     description: '',
-    priceNote: 'Shishas: 10€ · Luxury Shisha: Ask us',
+    priceNote: 'Shishas · Luxury Shisha: Ask us',
     featured: true,
     items: [
       { name: 'Mi Amor', note: 'Blend of pineapple, banana and menthol.' },
@@ -342,7 +302,6 @@ const sectionsEn: MenuSectionData[] = [
       { name: 'Mint' },
       { name: 'Apple' },
       { name: 'Lady Killer', note: 'Blend of mango, peach, mint and ice.' },
-      { name: 'Cheesecake', note: 'Blend of cheesecake, vanilla, caramel and popcorn.' },
       { name: 'Dancing Queen', note: 'Blend of pineapple, mango and red berries.' },
       { name: 'Blacknana', note: 'Blend of mint and grape.' },
       { name: 'Luxury Shisha', note: 'House special shisha.' },
@@ -382,8 +341,8 @@ const sectionsEn: MenuSectionData[] = [
     items: [
       { name: 'Cava Sangria (1L)', price: '15.00€' },
       { name: 'Wine Sangria (1L)', price: '14.00€' },
-      { name: 'Glass of Cava', price: '4.50€' },
-      { name: 'Glass of Wine', price: '4.50€' },
+      { name: 'Glass of Cava', price: '5€' },
+      { name: 'Glass of Wine', price: '5€' },
     ],
   },
   {
@@ -567,7 +526,7 @@ const sectionsFr: MenuSectionData[] = [
     kicker: '',
     title: 'Shishas',
     description: '',
-    priceNote: 'Shishas : 10€ · Shisha Luxury : consultez-nous',
+    priceNote: 'Shishas · Shisha Luxury : consultez-nous',
     featured: true,
     items: [
       { name: 'Mi Amor', note: 'Mélange d’ananas, banane et menthol.' },
@@ -577,7 +536,6 @@ const sectionsFr: MenuSectionData[] = [
       { name: 'Menthe' },
       { name: 'Pomme' },
       { name: 'Lady Killer', note: 'Mélange de mangue, pêche, menthe et glace.' },
-      { name: 'Tarta de Queso', note: 'Mélange de cheesecake, vanille, caramel et pop-corn.' },
       { name: 'Dancing Queen', note: 'Mélange d’ananas, mangue et fruits rouges.' },
       { name: 'Blacknana', note: 'Mélange de menthe et raisin.' },
       { name: 'Shisha Luxury', note: 'Shisha spéciale de la maison.' },
@@ -617,8 +575,8 @@ const sectionsFr: MenuSectionData[] = [
     items: [
       { name: 'Au cava (1L)', price: '15,00€' },
       { name: 'Au vin (1L)', price: '14,00€' },
-      { name: 'Coupe de cava', price: '4,50€' },
-      { name: 'Coupe de vin', price: '4,50€' },
+      { name: 'Coupe de cava', price: '5€' },
+      { name: 'Coupe de vin', price: '5€' },
     ],
   },
   {
@@ -799,12 +757,7 @@ const sectionsFr: MenuSectionData[] = [
 const localeContent: Record<LocaleCode, LocaleContent> = {
   es: {
     ui: {
-      heroTitle: 'Carta',
-      heroPrimaryAction: 'Ver carta',
-      heroSecondaryAction: 'Carta PDF',
-      quickInstagram: 'Instagram',
-      quickCall: 'Llamar',
-      quickDirections: 'Cómo llegar',
+      heroScrollDown: 'Desliza',
       referencesLabel: 'referencias',
       contactTitle: 'Contacto',
       contactMenu: 'Carta',
@@ -813,17 +766,11 @@ const localeContent: Record<LocaleCode, LocaleContent> = {
       contactDirections: 'Cómo llegar',
       backToTop: 'Volver al inicio',
     },
-    highlights: highlightsEs,
     sections: sectionsEs,
   },
   en: {
     ui: {
-      heroTitle: 'Menu',
-      heroPrimaryAction: 'View menu',
-      heroSecondaryAction: 'PDF menu',
-      quickInstagram: 'Instagram',
-      quickCall: 'Call',
-      quickDirections: 'Directions',
+      heroScrollDown: 'Scroll down',
       referencesLabel: 'items',
       contactTitle: 'Contact',
       contactMenu: 'Menu',
@@ -832,17 +779,11 @@ const localeContent: Record<LocaleCode, LocaleContent> = {
       contactDirections: 'Directions',
       backToTop: 'Back to top',
     },
-    highlights: highlightsEn,
     sections: sectionsEn,
   },
   fr: {
     ui: {
-      heroTitle: 'Carte',
-      heroPrimaryAction: 'Voir la carte',
-      heroSecondaryAction: 'Carte PDF',
-      quickInstagram: 'Instagram',
-      quickCall: 'Appeler',
-      quickDirections: 'Itinéraire',
+      heroScrollDown: 'Défilez',
       referencesLabel: 'références',
       contactTitle: 'Contact',
       contactMenu: 'Carte',
@@ -851,7 +792,6 @@ const localeContent: Record<LocaleCode, LocaleContent> = {
       contactDirections: 'Itinéraire',
       backToTop: 'Retour en haut',
     },
-    highlights: highlightsFr,
     sections: sectionsFr,
   },
 }

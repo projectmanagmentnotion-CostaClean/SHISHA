@@ -5,15 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/clean-dist.mjs && tsc -b && vite build",
+    "publish:root": "node scripts/publish-root.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
     "lenis": "^1.3.23",
-    "motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
