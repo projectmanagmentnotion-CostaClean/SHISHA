@@ -17,7 +17,7 @@ function PdfCta({ uiText }: PdfCtaProps) {
       <div className="section-frame" />
       <h2>{uiText.contactTitle}</h2>
       <div className="contact-actions">
-        <a className="button button-primary" href="https://luxuryshishalloret.com/menu/carta-luxury.pdf" target="_blank" rel="noreferrer">
+        <a className="button button-primary" href="/menu/Carta%20Luxury.pdf" target="_blank" rel="noreferrer">
           {uiText.contactMenu}
         </a>
         <a className="button button-secondary" href="https://instagram.com/luxuryshishalounge/" target="_blank" rel="noreferrer">
