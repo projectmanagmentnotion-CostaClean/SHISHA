@@ -70,6 +70,12 @@ function App() {
         ScrollTrigger.refresh()
       }
 
+        const handleMenuToggle = (event: MouseEvent) => {
+          if (event.target instanceof Element && event.target.closest('.section-toggle')) {
+            window.setTimeout(refreshScrollTriggers, 360)
+          }
+        }
+
       const context = gsap.context(() => {
         const media = gsap.matchMedia()
 
@@ -288,25 +294,27 @@ function App() {
 
         croquetasTimeline.fromTo('.js-croqueta-item', { y: 16, opacity: 0.42 }, { y: 0, opacity: 1, stagger: 0.06, ease: 'none' }, 0)
 
-        const sectionImages = gsap.utils.toArray<HTMLImageElement>('.js-section-visual-image, .js-tapas-hero-image, .js-tapas-card-image, .js-croquetas-image')
-        sectionImages.forEach((image) => {
-          const imageFrame = image.parentElement ?? image
-
+        gsap.utils.toArray<HTMLElement>('.js-scroll-image-frame').forEach((imageFrame) => {
           gsap.fromTo(
-            image,
-            { opacity: 0.72 },
+            imageFrame,
+            { y: 24, scale: 0.94, opacity: 0.42 },
             {
+              y: 0,
+              scale: 1,
               opacity: 1,
               ease: 'none',
               scrollTrigger: {
                 trigger: imageFrame,
-                start: 'top 92%',
-                end: 'bottom 42%',
-                scrub: 0.55,
+                start: 'top 94%',
+                end: 'top 52%',
+                scrub: 0.7,
               },
             },
           )
+        })
 
+        const sectionImages = gsap.utils.toArray<HTMLImageElement>('.js-section-visual-image, .js-tapas-hero-image, .js-tapas-card-image, .js-croquetas-image')
+        sectionImages.forEach((image) => {
           if (!image.complete) {
             image.addEventListener('load', refreshScrollTriggers)
           }
@@ -314,6 +322,7 @@ function App() {
 
         window.addEventListener('load', refreshScrollTriggers)
         window.addEventListener('resize', refreshScrollTriggers)
+        document.addEventListener('click', handleMenuToggle)
 
         cleanup = () => {
           const sectionImages = gsap.utils.toArray<HTMLImageElement>('.js-section-visual-image, .js-tapas-hero-image, .js-tapas-card-image, .js-croquetas-image')
@@ -322,6 +331,7 @@ function App() {
           })
           window.removeEventListener('load', refreshScrollTriggers)
           window.removeEventListener('resize', refreshScrollTriggers)
+          document.removeEventListener('click', handleMenuToggle)
           media.revert()
           context.revert()
           lenis.off('scroll', onLenisScroll)

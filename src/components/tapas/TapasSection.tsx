@@ -22,7 +22,7 @@ function TapasSection({ content }: TapasSectionProps) {
 
         <div className="tapas-hero js-tapas-hero">
           <div className="tapas-hero-visual">
-            <div className="tapas-hero-frame">
+            <div className="tapas-hero-frame js-scroll-image-frame">
               <div className="tapas-hero-glow" aria-hidden="true" />
               {heroImage ? (
                 <img

@@ -13,7 +13,7 @@ function CroquetasBlock({ group }: CroquetasBlockProps) {
   return (
     <section className="croquetas-block js-croquetas-block js-parallax-scope" id={group.anchor}>
       <div className="croquetas-visual">
-        <div className="croquetas-visual-shell">
+        <div className="croquetas-visual-shell js-scroll-image-frame">
           <div className="croquetas-visual-wolf" aria-hidden="true" />
           {currentImage ? (
             <img

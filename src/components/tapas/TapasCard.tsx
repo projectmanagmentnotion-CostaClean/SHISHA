@@ -18,7 +18,7 @@ function TapasCard({ item, className = '' }: TapasCardProps) {
 
   return (
     <article className={`tapas-card js-tapas-card ${className}`.trim()}>
-      <div className="tapas-card-visual">
+      <div className="tapas-card-visual js-scroll-image-frame">
         {currentImage ? (
           <img
             className="js-tapas-card-image"

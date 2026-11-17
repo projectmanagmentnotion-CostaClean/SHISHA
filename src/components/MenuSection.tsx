@@ -107,7 +107,7 @@ function MenuSection({ section }: MenuSectionProps) {
                 <img src="/branding/logo-mark-wolf.svg" alt="" />
               </div>
               <div className="section-visual-glow" aria-hidden="true" />
-              <div className="section-visual-art js-section-visual-art">
+              <div className="section-visual-art js-section-visual-art js-scroll-image-frame">
                 {hasImageError ? (
                   <div className="section-visual-copy" aria-hidden="true">
                     <span>Visual slot</span>
