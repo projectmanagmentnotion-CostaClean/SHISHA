@@ -14,6 +14,7 @@ const tacoLuxuryImage: TapasImageAsset = {
 const croquetasImage: TapasImageAsset = {
   alt: 'Croquetas Tentación',
   sources: [
+    '/products/tapas/croquetas-tentacion-framed.webp',
     '/products/tapas/croquetas-tentacion.webp',
     '/products/tapas/croquetas-tentacion.png',
     '/products/tapas/croquetas-tentacion.jpg',

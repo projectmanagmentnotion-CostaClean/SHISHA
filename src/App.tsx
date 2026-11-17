@@ -212,7 +212,6 @@ function App() {
         })
 
         gsap.utils.toArray<HTMLElement>('.menu-section-featured .js-section-visual').forEach((visual) => {
-          const image = visual.querySelector<HTMLElement>('.js-section-visual-image, .section-visual-copy')
           const glow = visual.querySelector<HTMLElement>('.section-visual-glow')
           const wolf = visual.querySelector<HTMLElement>('.section-visual-wolf')
           const direction = visual.dataset.visualDirection === 'right' ? 1 : -1
@@ -225,15 +224,6 @@ function App() {
               scrub: 0.55,
             },
           })
-
-          if (image) {
-            visualTimeline.fromTo(
-              image,
-              { xPercent: 34 * direction, yPercent: 24, rotate: 4 * direction, opacity: 0.18 },
-              { xPercent: 0, yPercent: 0, rotate: 0, opacity: 1, ease: 'none' },
-              0,
-            )
-          }
 
           if (wolf) {
             visualTimeline.fromTo(
@@ -265,12 +255,6 @@ function App() {
 
         tapasTimeline
           .fromTo('.js-tapas-hero', { y: 34 }, { y: -8, ease: 'none' }, 0)
-          .fromTo(
-            '.js-tapas-hero-image',
-            { opacity: 0.78 },
-            { opacity: 1, ease: 'none' },
-            0,
-          )
 
         gsap.utils.toArray<HTMLElement>('.js-tapas-card').forEach((card, index) => {
           const direction = index % 2 === 0 ? -1 : 1
@@ -302,12 +286,27 @@ function App() {
           },
         })
 
-        croquetasTimeline
-          .fromTo('.js-croquetas-image', { xPercent: -6, yPercent: 8, opacity: 0.64 }, { xPercent: 0, yPercent: -4, opacity: 1, ease: 'none' }, 0)
-          .fromTo('.js-croqueta-item', { y: 16, opacity: 0.42 }, { y: 0, opacity: 1, stagger: 0.06, ease: 'none' }, 0)
+        croquetasTimeline.fromTo('.js-croqueta-item', { y: 16, opacity: 0.42 }, { y: 0, opacity: 1, stagger: 0.06, ease: 'none' }, 0)
 
         const sectionImages = gsap.utils.toArray<HTMLImageElement>('.js-section-visual-image, .js-tapas-hero-image, .js-tapas-card-image, .js-croquetas-image')
         sectionImages.forEach((image) => {
+          const imageFrame = image.parentElement ?? image
+
+          gsap.fromTo(
+            image,
+            { opacity: 0.72 },
+            {
+              opacity: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: imageFrame,
+                start: 'top 92%',
+                end: 'bottom 42%',
+                scrub: 0.55,
+              },
+            },
+          )
+
           if (!image.complete) {
             image.addEventListener('load', refreshScrollTriggers)
           }
