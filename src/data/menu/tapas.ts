@@ -40,6 +40,14 @@ const crujientesImage: TapasImageAsset = {
   ],
 }
 
+const gyozasImage: TapasImageAsset = {
+  alt: 'Gyozas de pollo doradas con salsa para mojar',
+  sources: [
+    '/products/tapas/gyozas-pollo.webp',
+    '/products/tapas/gyozas-pollo.png',
+  ],
+}
+
 const tapasContentEs: TapasContent = {
   anchor: 'tapas',
   kicker: 'Street Food Lounge',
@@ -73,6 +81,12 @@ const tapasContentEs: TapasContent = {
         price: '7€',
         description: 'Tiras de pollo extra crujientes acompañadas de nuestra salsa barbacoa.',
         image: crujientesImage,
+      },
+      {
+        name: 'Gyozas de pollo',
+        price: '4,50€',
+        description: 'Deliciosas gyozas rellenas de jugoso pollo, con una masa fina y dorada, cocinadas al punto perfecto para conseguir un exterior crujiente y un interior tierno y sabroso. ¡Un bocado irresistible que tienes que probar!',
+        image: gyozasImage,
       },
     ],
   },
@@ -136,6 +150,12 @@ const tapasContentEn: TapasContent = {
         description: 'Extra crispy chicken strips served with our barbecue sauce.',
         image: crujientesImage,
       },
+      {
+        name: 'Chicken gyozas',
+        price: '4.50€',
+        description: 'Delicious gyozas filled with juicy chicken, wrapped in a thin golden dough and cooked until crisp outside and tender inside. An irresistible bite to try.',
+        image: gyozasImage,
+      },
     ],
   },
   croquetas: {
@@ -197,6 +217,12 @@ const tapasContentFr: TapasContent = {
         price: '7€',
         description: 'Tendres morceaux de poulet extra croustillants accompagnés de notre sauce barbecue.',
         image: crujientesImage,
+      },
+      {
+        name: 'Gyozas au poulet',
+        price: '4,50€',
+        description: 'De délicieuses gyozas garnies de poulet juteux, dans une pâte fine et dorée, cuites pour obtenir un extérieur croustillant et un intérieur tendre et savoureux. Une bouchée irrésistible à découvrir.',
+        image: gyozasImage,
       },
     ],
   },
