@@ -267,8 +267,8 @@ function App() {
           .fromTo('.js-tapas-hero', { y: 34 }, { y: -8, ease: 'none' }, 0)
           .fromTo(
             '.js-tapas-hero-image',
-            { xPercent: 10, yPercent: 10, rotate: -1.2, opacity: 0.7 },
-            { xPercent: 0, yPercent: -4, rotate: 0.08, opacity: 1, ease: 'none' },
+            { opacity: 0.78 },
+            { opacity: 1, ease: 'none' },
             0,
           )
 

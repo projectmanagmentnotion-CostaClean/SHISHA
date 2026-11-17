@@ -3,6 +3,7 @@ import type { LocaleCode, TapasContent, TapasImageAsset } from './types'
 const tacoLuxuryImage: TapasImageAsset = {
   alt: 'El Taco Luxury',
   sources: [
+    '/products/tapas/taco-luxury-framed.webp',
     '/products/tapas/taco-luxury.webp',
     '/products/tapas/taco-luxury.png',
     '/products/tapas/taco-luxury.jpg',
